@@ -22,7 +22,11 @@ public class FollowPlayerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector2.Distance(transform.position, target.position);
+        float distance;
+        if(transform.position.x < target.position.x)
+            distance = target.position.x - transform.position.x;
+        else
+            distance = transform.position.x - target.position.x;
         if (distance > stopDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), speed * Time.deltaTime);
